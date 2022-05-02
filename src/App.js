@@ -8,7 +8,7 @@ function App() {
           <h1>U get </h1>
           <Counter/>
           <h1> points </h1>
-
+          <h2>just kiddin'))</h2>
       </div>
     );
 }
