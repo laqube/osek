@@ -8,6 +8,7 @@ const Counter = function (){
     }
     function minus(){
         setBitches(bitches-1);
+        
     }
 
     return(
