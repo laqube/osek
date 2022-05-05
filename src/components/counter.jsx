@@ -1,4 +1,6 @@
 import React, {useState} from 'react';
+import {Button} from '@material-ui/core'
+
 
 const Counter = function (){
     const[bitches, setBitches] = useState(0);
@@ -14,8 +16,8 @@ const Counter = function (){
     return(
         <div>
             <h1>{bitches}</h1>
-            <button onClick={plus}>Go to gym</button>
-            <button onClick={minus}>Play Dota</button>
+            <Button onClick={plus}>Go to gym</Button>
+            <Button onClick={minus}>Play Dota</Button>
         </div>
     );
 
