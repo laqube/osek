@@ -1,7 +1,9 @@
 import React, {useState} from 'react';
-import Counter from "./components/counter";
 import { createTheme, ThemeProvider} from "@material-ui/core/styles";
 import CustomBtn from "./components/CustomBtn";
+import navBar from "./components/navBar";
+
+
 
 const theme = createTheme({
     palette:{
@@ -30,16 +32,12 @@ const theme = createTheme({
 });
 
 function App() {
-
     return(
       <div className="App">
           <ThemeProvider theme={theme}>
-            <CustomBtn txt="test"/>
+              <navBar/>
+              {/*<CustomBtn txt={"salem"}/>*/}
           </ThemeProvider>
-          <h1>U get </h1>
-          <Counter/>
-          <h1> points </h1>
-          <h5>just kiddin'))</h5>
       </div>
     );
 }
