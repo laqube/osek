@@ -52,12 +52,14 @@ function NavBar() {
                 Erlerge
             </Typography>
             <Typography variant="h6" className={classes.menuItem}>
-                Bikelerge
+                Bikecterge
             </Typography>
             <Typography variant="h6" className={classes.menuItem}>
                 Balalarg'a
             </Typography>
-            <CustomBtn txt="Tirkeluw" />
+
+            <CustomBtn txt="Tirkeluw"/>
+
         </Toolbar>
     )
 }
