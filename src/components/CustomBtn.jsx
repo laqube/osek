@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button} from '@material-ui/core'
 import {withStyles} from '@material-ui/core/styles'
-import {Route, Link} from 'react-router-dom'
+
 
 const StyledButton = withStyles({
     root: {
@@ -28,7 +28,7 @@ const StyledButton = withStyles({
 
 const CustomBtn = (props) => {
     return (
-        <StyledButton variant="contained" href="./components/Reg.js">{props.txt}</StyledButton>
+        <StyledButton>{props.txt}</StyledButton>
     );
 };
 

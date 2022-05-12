@@ -4,6 +4,8 @@ import logo from '../logo.svg'
 import logoMobile from '../logoMobile.svg'
 import {Toolbar, Typography} from '@material-ui/core'
 import {makeStyles} from "@material-ui/core/styles";
+import {Link} from "react-router-dom";
+import {Button} from '@material-ui/core'
 
 const styles = makeStyles({
     bar:{
@@ -58,7 +60,10 @@ function NavBar() {
                 Balalarg'a
             </Typography>
 
-            <CustomBtn txt="Tirkeluw"/>
+
+            <Link to="/signup">
+                <CustomBtn txt="Tirkeluw"/>
+            </Link>
 
         </Toolbar>
     )
