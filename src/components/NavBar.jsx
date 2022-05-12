@@ -33,8 +33,9 @@ const styles = makeStyles({
     menuItem: {
         cursor: "pointer",
         flexGrow: 1,
+        paddingLeft: "5rem",
         "&:hover": {
-            color:  "#4f25c8"
+            color:  "#fb4424"
         },
         ['@media (max-width:780px)']: {
             paddingBottom: "1rem"    }
@@ -59,7 +60,6 @@ function NavBar() {
             <Typography variant="h6" className={classes.menuItem}>
                 Balalarg'a
             </Typography>
-
 
             <Link to="/signup">
                 <CustomBtn txt="Tirkeluw"/>

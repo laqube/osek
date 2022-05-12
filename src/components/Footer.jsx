@@ -1,27 +1,62 @@
-import React from 'react';
-import {BottomNavigation, BottomNavigationAction} from '@material-ui/core'
-import FacebookIcon from '@material-ui/icons/Facebook';
-import TwitterIcon from '@material-ui/icons/Twitter';
-import InstagramIcon from '@material-ui/icons/Instagram';
-import YouTubeIcon from '@material-ui/icons/YouTube';
+import React from "react";
+import {
+    Box,
+    Container,
+    Row,
+    Column,
+    FooterLink,
+    Heading,
+} from "./FooterStyles";
 
-function Footer() {
+const Footer = () => {
     return (
-        <BottomNavigation style={{backgroundColor: "#29292A", height: "200px"}}>
-            <BottomNavigationAction color="red" label="Facebook" value="recents" icon={<FacebookIcon  style={{fill: "#3b5998"}}/>} />
-            <BottomNavigationAction label="Twitter" value="favorites" icon={<TwitterIcon  style={{fill: "#1DA1F2"}}/>} />
-            <BottomNavigationAction label="Instagram" value="nearby" icon={<InstagramIcon  style={{fill: " #C13584"}}/>} />
-            <BottomNavigationAction label="YouTube" value="folder" icon={<YouTubeIcon  style={{fill: "#c4302b"}}/>} />
-            <br/>
-            <h3 style={{
-                fontWeight: 600,
-                color: "#fff",
-                lineHeight: '2rem'
-            }}>(c)Miras did this</h3>
-        </BottomNavigation>
-    )
-}
-
-
-
+        <Box>
+            <Container>
+                <Row>
+                    <Column>
+                        <Heading>About Us</Heading>
+                        <FooterLink href="#">Aim</FooterLink>
+                        <FooterLink href="#">Vision</FooterLink>
+                    </Column>
+                    <Column>
+                        <Heading>Contact Us</Heading>
+                        <FooterLink href="#">Almaty</FooterLink>
+                        <FooterLink href="#">Astana</FooterLink>
+                    </Column>
+                    <Column>
+                        <Heading>Social Media</Heading>
+                        <FooterLink href="#">
+                            <i className="fab fa-facebook-f">
+                <span style={{ marginLeft: "10px" }}>
+                  Facebook
+                </span>
+                            </i>
+                        </FooterLink>
+                        <FooterLink href="#">
+                            <i className="fab fa-instagram">
+                <span style={{ marginLeft: "10px" }}>
+                  Instagram
+                </span>
+                            </i>
+                        </FooterLink>
+                        <FooterLink href="#">
+                            <i className="fab fa-twitter">
+                <span style={{ marginLeft: "10px" }}>
+                  Twitter
+                </span>
+                            </i>
+                        </FooterLink>
+                        <FooterLink href="#">
+                            <i className="fab fa-youtube">
+                <span style={{ marginLeft: "10px" }}>
+                  Youtube
+                </span>
+                            </i>
+                        </FooterLink>
+                    </Column>
+                </Row>
+            </Container>
+        </Box>
+    );
+};
 export default Footer;
