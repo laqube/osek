@@ -1,14 +1,22 @@
 import React, {useState} from 'react';
-import Counter from "./components/counter";
+import Welcome from "./pages/Welcome";
+import Login  from "./pages/Login";
+import Reg from "./pages/Reg";
+import {Routes, Route, Link} from "react-router-dom";
+import {BrowserRouter} from "react-router-dom";
 
 function App() {
 
     return(
       <div className="App">
-          <h1>U get </h1>
-          <Counter/>
-          <h1> points </h1>
-          <h2>just kiddin'))</h2>
+          <BrowserRouter>
+              <Routes>
+                  <Route path="/" element={<Welcome/>}/>
+                  <Route path="/login" element={<Login/>}/>
+                  <Route path="/signup" element={<Reg/>}/>
+
+              </Routes>
+          </BrowserRouter>
       </div>
     );
 }
