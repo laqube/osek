@@ -18,7 +18,7 @@ const styles = makeStyles({
         }
     },
     logo: {
-        width: "15%",
+        width: "100%",
         ['@media (max-width:780px)']: {
             display: "none"
         }
@@ -45,9 +45,11 @@ const styles = makeStyles({
 function NavBar() {
     const classes = styles()
     return(
-        <Toolbar position="sticky" color="rgba(0, 0, 0, 0.87)" calssName={classes.bar}>
-            <img src={logo} className={classes.logo} alt="{}"/>
-            <img src={logoMobile} className={classes.logoMobile} alt="{}"/>
+        <Toolbar position="sticky" color="rgba(0, 0, 0, 0.87)" className={classes.bar}>
+            <Link to="/">
+                <img src={logo} className={classes.logo} alt="{}"/>
+                <img src={logoMobile} className={classes.logoMobile} alt="{}"/>
+            </Link> 
             <Typography variant="h6" className={classes.menuItem}>
                 Juwirda
             </Typography>

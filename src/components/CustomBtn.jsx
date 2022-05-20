@@ -26,7 +26,7 @@ const StyledButton = withStyles({
     },
 })(Button);
 
-const CustomBtn = (props) => {
+const CustomBtn = (props, Link) => {
     return (
         <StyledButton>{props.txt}</StyledButton>
     );

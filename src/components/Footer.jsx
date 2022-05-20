@@ -7,6 +7,7 @@ import {
     FooterLink,
     Heading,
 } from "./FooterStyles";
+import Link from 'react-router-dom';
 
 const Footer = () => {
     return (
@@ -46,7 +47,7 @@ const Footer = () => {
                 </span>
                             </i>
                         </FooterLink>
-                        <FooterLink href="#">
+                        <FooterLink to="/404">
                             <i className="fab fa-youtube">
                 <span style={{ marginLeft: "10px" }}>
                   Youtube
