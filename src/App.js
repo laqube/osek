@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import Welcome from "./pages/Welcome";
 import Login  from "./pages/Login";
 import Reg from "./pages/Reg";
+import Shop from "./pages/Shop"
 import PageNotFound from "./pages/PageNotFound"
 import {Routes, Route, Link} from "react-router-dom";
 import {BrowserRouter} from "react-router-dom";
@@ -21,7 +22,7 @@ function App() {
                   <Route path="*" element={<PageNotFound/>}/>
                   <Route path="" element={<PageNotFound/>}/>
                   <Route element={<PageNotFound/>}/>
-                  <Route path="/shop"/>
+                  <Route path="/shop" element={<Shop/>}/>
               </Routes>
           </BrowserRouter>
 

@@ -49,22 +49,26 @@ function NavBar() {
             <Link to="/">
                 <img src={logo} className={classes.logo} alt="{}"/>
                 <img src={logoMobile} className={classes.logoMobile} alt="{}"/>
-            </Link> 
+            </Link>
+
             <Typography variant="h6" className={classes.menuItem}>
-                Juwirda
+                <Link to="/404">
+                    Juwırda
+                </Link>
+
             </Typography>
             <Typography variant="h6" className={classes.menuItem}>
                 Erlerge
             </Typography>
             <Typography variant="h6" className={classes.menuItem}>
-                Bikecterge
+                Äıelderge
             </Typography>
             <Typography variant="h6" className={classes.menuItem}>
-                Balalarg'a
+                Balalarga
             </Typography>
 
             <Link to="/signup">
-                <CustomBtn txt="Tirkeluw"/>
+                <CustomBtn txt="Kiruw"/>
             </Link>
 
         </Toolbar>
