@@ -13,11 +13,16 @@ import Typography from '@material-ui/core/Typography'
 import Container from '@material-ui/core/Container'
 import {createTheme, ThemeProvider} from "@material-ui/core";
 
+
 function Copyright(props) {
     return (
         <Typography variant="body2" color="text.secondary" align="center" {...props}>
             {'Copyright © '}
-            <Link color="inherit" to="/">
+            <Link color="inherit" to="/"
+                  style={{
+                      textDecoration: 'none',
+                      color:'black',
+                  }}>
                 osek.kz
             </Link>{' '}
             {new Date().getFullYear()}
@@ -40,7 +45,7 @@ const Login = () => {
 
     return (
         <ThemeProvider theme={theme}>
-            <Container component="main" maxWidth="xs">
+            <Container  maxWidth="xs" component="main" direction="column" justifyContent="center">
                 <CssBaseline />
                 <Box
                     sx={{
@@ -79,7 +84,7 @@ const Login = () => {
                         />
                         <FormControlLabel
                             control={<Checkbox value="remember" color="primary" />}
-                            label="Remember me"
+                            label="Júıede qalý"
                         />
                         <Button
                             type="submit"
@@ -87,17 +92,25 @@ const Login = () => {
                             variant="contained"
                             sx={{ mt: 3, mb: 2 }}
                         >
-                            Sign In
+                            Kiruw
                         </Button>
                         <Grid container>
                             <Grid item xs>
-                                <Link to="/" variant="body2">
-                                    Forgot password?
+                                <Link to="/404" variant="body2"
+                                      style={{
+                                          textDecoration: 'none',
+                                          color:'#fb4424',
+                                      }}>
+                                    Qupııasózdі umyttym
                                 </Link>
                             </Grid>
                             <Grid item>
-                                <Link to="/signup" variant="body2">
-                                    {"Don't have an account? Sign Up"}
+                                <Link to="/signup" variant="body2"
+                                      style={{
+                                          textDecoration: 'none',
+                                          color:'#fb4424',
+                                      }}>
+                                    {"Bar tіrkelgіge kіrý"}
                                 </Link>
                             </Grid>
                         </Grid>

@@ -16,6 +16,7 @@ const styles = makeStyles({
         ['@media (max-width:780px)']: {
             flexDirection: "column"
         }
+
     },
     logo: {
         width: "100%",
@@ -39,7 +40,9 @@ const styles = makeStyles({
         },
         ['@media (max-width:780px)']: {
             paddingBottom: "1rem"    }
-    }
+    },
+
+
 })
 
 function NavBar() {
@@ -52,10 +55,13 @@ function NavBar() {
             </Link>
 
             <Typography variant="h6" className={classes.menuItem}>
-                <Link to="/404">
+                <Link to="/shop"
+                      style={{
+                          textDecoration: 'none',
+                          color:'black',
+                      }}>
                     Juwırda
                 </Link>
-
             </Typography>
             <Typography variant="h6" className={classes.menuItem}>
                 Erlerge
@@ -67,8 +73,12 @@ function NavBar() {
                 Balalarga
             </Typography>
 
-            <Link to="/signup">
-                <CustomBtn txt="Kiruw"/>
+            <Link to="/signup"
+                  style={{
+                    textDecoration: 'none',
+                    color:'black',
+                  }}>
+                <CustomBtn txt="Kiruw" />
             </Link>
 
         </Toolbar>

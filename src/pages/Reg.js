@@ -18,7 +18,11 @@ function Copyright(props) {
     return (
         <Typography variant="body2" color="text.secondary" align="center" {...props}>
             {'Copyright © '}
-            <Link color="inherit" to="/">
+            <Link color="inherit" to="/"
+                  style={{
+                      textDecoration: 'none',
+                      color:'black',
+                  }}>
                 osek.kz
             </Link>{' '}
             {new Date().getFullYear()}
@@ -40,7 +44,7 @@ const Reg = () => {
 
     return (
         <ThemeProvider theme={theme}>
-            <Container component="main" maxWidth="xs">
+            <Container component="main" maxWidth="xs" alignItems="center">
                 <CssBaseline />
                 <Box
                     sx={{
@@ -103,7 +107,7 @@ const Reg = () => {
                             <Grid item xs={12}>
                                 <FormControlLabel
                                     control={<Checkbox value="allowExtraEmails" color="primary" />}
-                                    label="I want to receive inspiration, marketing promotions and updates via email."
+                                    label="Jarnama jáne ózge habarlama jіberýge kelsemіn"
                                 />
                             </Grid>
                         </Grid>
@@ -113,18 +117,23 @@ const Reg = () => {
                             variant="contained"
                             sx={{ mt: 3, mb: 2 }}
                         >
-                            Sign Up
+                            Tіrkeluw
                         </Button>
                         <Grid container justifyContent="flex-end">
                             <Grid item>
-                                <Link to="/login" variant="body2">
-                                    Already have an account? Sign in
+                                <Link to="/login" variant="body2"
+                                      style={{
+                                          textDecoration: 'none',
+                                          color:'#fb4424',
+                                      }}>
+                                    Jańadan tіrkelý
                                 </Link>
                             </Grid>
                         </Grid>
                     </Box>
                 </Box>
-                <Copyright sx={{ mt: 5 }} />
+                <Copyright sx={{ mt: 5 }}
+                />
             </Container>
         </ThemeProvider>
     );
