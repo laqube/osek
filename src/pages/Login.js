@@ -59,7 +59,7 @@ const Login = () => {
 
                     </Avatar>
                     <Typography component="h1" variant="h5">
-                        Sign in
+                        Kiruw
                     </Typography>
                     <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
                         <TextField
@@ -67,7 +67,7 @@ const Login = () => {
                             required
                             fullWidth
                             id="email"
-                            label="Email Address"
+                            label="Pocta"
                             name="email"
                             autoComplete="email"
                             autoFocus
@@ -77,7 +77,7 @@ const Login = () => {
                             required
                             fullWidth
                             name="password"
-                            label="Password"
+                            label="Qupııasóz"
                             type="password"
                             id="password"
                             autoComplete="current-password"

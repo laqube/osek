@@ -58,7 +58,7 @@ const Reg = () => {
                         {/*<LockOutlinedIcon />*/}
                     </Avatar>
                     <Typography component="h1" variant="h5">
-                        Sign up
+                        Tirkeluw
                     </Typography>
                     <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
                         <Grid container spacing={2}>
@@ -69,7 +69,7 @@ const Reg = () => {
                                     required
                                     fullWidth
                                     id="firstName"
-                                    label="First Name"
+                                    label="Aty"
                                     autoFocus
                                 />
                             </Grid>
@@ -78,7 +78,7 @@ const Reg = () => {
                                     required
                                     fullWidth
                                     id="lastName"
-                                    label="Last Name"
+                                    label="Tegі"
                                     name="lastName"
                                     autoComplete="family-name"
                                 />
@@ -88,7 +88,7 @@ const Reg = () => {
                                     required
                                     fullWidth
                                     id="email"
-                                    label="Email Address"
+                                    label="Pocta"
                                     name="email"
                                     autoComplete="email"
                                 />
@@ -98,7 +98,7 @@ const Reg = () => {
                                     required
                                     fullWidth
                                     name="password"
-                                    label="Password"
+                                    label="Qupııasóz"
                                     type="password"
                                     id="password"
                                     autoComplete="new-password"
