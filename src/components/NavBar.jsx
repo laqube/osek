@@ -5,7 +5,8 @@ import logoMobile from '../logoMobile.svg'
 import {Toolbar, Typography} from '@material-ui/core'
 import {makeStyles} from "@material-ui/core/styles";
 import {Link} from "react-router-dom";
-import {Button} from '@material-ui/core'
+import {Button} from '@material-ui/core';
+import AviButton from "./AviButton";
 
 const styles = makeStyles({
     bar:{
@@ -80,6 +81,8 @@ function NavBar() {
                   }}>
                 <CustomBtn txt="Kiruw" />
             </Link>
+
+            {/*<AviButton/>*/}
 
         </Toolbar>
     )

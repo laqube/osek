@@ -110,7 +110,7 @@ const Login = () => {
                                           textDecoration: 'none',
                                           color:'#fb4424',
                                       }}>
-                                    {"Bar tіrkelgіge kіrý"}
+                                    {"Jańadan tіrkeluw"}
                                 </Link>
                             </Grid>
                         </Grid>

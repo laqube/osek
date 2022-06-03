@@ -126,7 +126,7 @@ const Reg = () => {
                                           textDecoration: 'none',
                                           color:'#fb4424',
                                       }}>
-                                    Jańadan tіrkelý
+                                    {"Bar tіrkelgіge kіruw"}
                                 </Link>
                             </Grid>
                         </Grid>
