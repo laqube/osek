@@ -2,7 +2,7 @@ import React from 'react';
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import Item from "../components/item"
-import { Container, Grid, Row, Column } from '@mui/material';
+import { Container, Grid} from '@mui/material';
 import {createTheme, makeStyles, ThemeProvider} from "@material-ui/core/styles";
 import Slider from '@mui/material/Slider';
 
