@@ -61,7 +61,7 @@ function NavBar() {
                           textDecoration: 'none',
                           color:'black',
                       }}>
-                    Juwırda desen
+                    Juwırda
                 </Link>
             </Typography>
             <Typography variant="h6" className={classes.menuItem}>

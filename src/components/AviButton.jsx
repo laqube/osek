@@ -58,7 +58,7 @@ const AviButton = () => {
         <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Baptaýlar">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar {...stringAvatar('Sample Name')} />
+                    <Avatar {...stringAvatar('Abo Shompay')} />
                 </IconButton>
             </Tooltip>
             <Menu
