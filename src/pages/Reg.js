@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import Avatar from '@material-ui/core/Avatar'
 import Button from '@material-ui/core/Button'
 import CssBaseline from '@material-ui/core/CssBaseline'
@@ -12,6 +12,10 @@ import Typography from '@material-ui/core/Typography'
 
 import Container from '@material-ui/core/Container'
 import {createTheme, ThemeProvider} from "@material-ui/core";
+
+import {UserAuth} from '../context/AuthContext'
+import { getAuth,updateProfile } from "firebase/auth";
+import { useNavigate} from 'react-router-dom';
 
 
 function Copyright(props) {
@@ -33,14 +37,35 @@ function Copyright(props) {
 
 const theme = createTheme();
 const Reg = () => {
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get('email'),
-            password: data.get('password'),
-        });
-    };
+    const[email,setEmail] =useState('');
+    const[password, setPassword]=useState('');
+    const[name, setName]=useState('');
+    const[error, setError]=useState('');
+    const navigate=useNavigate();
+    const auth = getAuth();
+
+    const {createUser}=UserAuth();
+
+    const handleSubmit=async(e)=>{
+        e.preventDefault();
+        setError('');
+        try{
+            await createUser(email, password);
+            navigate('/account');
+        }catch(e){
+            setError(e.message);
+            console.log(e.message);
+        }
+    };  
+    updateProfile(auth.currentUser, {
+        displayName: name,
+      }).then(() => {
+        // Profile updated!
+        // ...
+      }).catch((error) => {
+        // An error occurred
+        // ...
+      });
 
     return (
         <ThemeProvider theme={theme}>
@@ -63,7 +88,7 @@ const Reg = () => {
                     <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
                         <Grid container spacing={2}>
                             <Grid item xs={12} sm={6}>
-                                <TextField
+                                <TextField onChange={(e)=>setName(e.target.value)}
                                     autoComplete="given-name"
                                     name="firstName"
                                     required
@@ -84,7 +109,7 @@ const Reg = () => {
                                 />
                             </Grid>
                             <Grid item xs={12}>
-                                <TextField
+                                <TextField onChange={(e)=>setEmail(e.target.value)}
                                     required
                                     fullWidth
                                     id="email"
@@ -94,7 +119,7 @@ const Reg = () => {
                                 />
                             </Grid>
                             <Grid item xs={12}>
-                                <TextField
+                                <TextField onChange={(e)=>setPassword(e.target.value)}
                                     required
                                     fullWidth
                                     name="password"

@@ -7,6 +7,7 @@ import {makeStyles} from "@material-ui/core/styles";
 import {Link} from "react-router-dom";
 import {Button} from '@material-ui/core';
 import AviButton from "./AviButton";
+import { getAuth } from 'firebase/auth'
 
 const styles = makeStyles({
     bar:{
@@ -47,6 +48,8 @@ const styles = makeStyles({
 })
 
 function NavBar() {
+    const auth=getAuth();
+    const user=auth.currentUser;
     const classes = styles()
     return(
         <Toolbar position="sticky" color="rgba(0, 0, 0, 0.87)" className={classes.bar}>
@@ -73,17 +76,10 @@ function NavBar() {
             <Typography variant="h6" className={classes.menuItem}>
                 Balalarga
             </Typography>
-
-            <Link to="/signup"
-                  style={{
-                    textDecoration: 'none',
-                    color:'black',
-                  }}>
+            <Link to="/signup"style={{textDecoration: 'none',color:'black',}}>
                 <CustomBtn txt="Kiruw" />
             </Link>
-
-            {/*<AviButton/>*/}
-
+                <AviButton/>
         </Toolbar>
     )
 }

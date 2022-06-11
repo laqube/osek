@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Avatar from '@material-ui/core/Avatar'
 import Button from '@material-ui/core/Button'
 import CssBaseline from '@material-ui/core/CssBaseline'
@@ -12,6 +12,10 @@ import Typography from '@material-ui/core/Typography'
 
 import Container from '@material-ui/core/Container'
 import {createTheme, ThemeProvider} from "@material-ui/core";
+import {UserAuth} from '../context/AuthContext'
+import { async } from '@firebase/util';
+
+import {useNavigate} from 'react-router-dom';
 
 
 function Copyright(props) {
@@ -34,14 +38,23 @@ function Copyright(props) {
 const theme = createTheme();
 
 const Login = () => {
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get('email'),
-            password: data.get('password'),
-        });
-    };
+    const {signIn} =UserAuth()
+    const[email,setEmail] =useState('');
+    const[password, setPassword]=useState('');
+    const[error, setError]=useState('');
+    const navigate=useNavigate();
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setError('');
+        try{
+            await signIn(email,password);
+            navigate('/account');
+        }catch(e){
+            setError(e.message);
+            console.log(e.message);
+        }
+    }
 
     return (
         <ThemeProvider theme={theme}>
@@ -62,7 +75,7 @@ const Login = () => {
                         Kiruw
                     </Typography>
                     <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-                        <TextField
+                        <TextField onChange={(e) => setEmail(e.target.value)}
                             margin="normal"
                             required
                             fullWidth
@@ -72,7 +85,7 @@ const Login = () => {
                             autoComplete="email"
                             autoFocus
                         />
-                        <TextField
+                        <TextField onChange={(e) => setPassword(e.target.value)}
                             margin="normal"
                             required
                             fullWidth
