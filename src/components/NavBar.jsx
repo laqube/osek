@@ -5,7 +5,6 @@ import logoMobile from '../logoMobile.svg'
 import {Toolbar, Typography} from '@material-ui/core'
 import {makeStyles} from "@material-ui/core/styles";
 import {Link} from "react-router-dom";
-import {Button} from '@material-ui/core';
 import AviButton from "./AviButton";
 import { getAuth } from 'firebase/auth'
 
@@ -43,8 +42,6 @@ const styles = makeStyles({
         ['@media (max-width:780px)']: {
             paddingBottom: "1rem"    }
     },
-
-
 })
 
 function NavBar() {
@@ -59,7 +56,7 @@ function NavBar() {
             </Link>
 
             <Typography variant="h6" className={classes.menuItem}>
-                <Link to="/shop"
+                <Link to="/shop/new"
                       style={{
                           textDecoration: 'none',
                           color:'black',
@@ -68,13 +65,31 @@ function NavBar() {
                 </Link>
             </Typography>
             <Typography variant="h6" className={classes.menuItem}>
-                Erlerge
+                <Link to="/shop/men"
+                      style={{
+                          textDecoration: 'none',
+                          color:'black',
+                      }}>
+                    Erlerge
+                </Link>
             </Typography>
             <Typography variant="h6" className={classes.menuItem}>
-                Äıelderge
+                <Link to="/shop/women"
+                      style={{
+                          textDecoration: 'none',
+                          color:'black',
+                      }}>
+                    Äıelderge
+                </Link>
             </Typography>
             <Typography variant="h6" className={classes.menuItem}>
-                Balalarga
+                <Link to="/shop/kids"
+                      style={{
+                          textDecoration: 'none',
+                          color:'black',
+                      }}>
+                    Balalarga
+                </Link>
             </Typography>
             <Link to="/signup"style={{textDecoration: 'none',color:'black',}}>
                 <CustomBtn txt="Kiruw" />

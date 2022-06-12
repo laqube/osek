@@ -2,7 +2,10 @@ import React, {useState} from 'react';
 import Welcome from "./pages/Welcome";
 import Login  from "./pages/Login";
 import Reg from "./pages/Reg";
-import Shop from "./pages/Shop"
+import ShopNew from "./pages/Shop.new"
+import ShopMen from "./pages/Shop.men"
+import ShopWomen from "./pages/Shop.women"
+import ShopKids from "./pages/Shop.kids"
 import PageNotFound from "./pages/PageNotFound"
 import {Routes, Route, Link} from "react-router-dom";
 import {BrowserRouter} from "react-router-dom";
@@ -27,7 +30,10 @@ function App() {
                   <Route path="*" element={<PageNotFound/>}/>
                   <Route path="" element={<PageNotFound/>}/>
                   <Route element={<PageNotFound/>}/>
-                  <Route path="/shop" element={<Shop/>}/>
+                  <Route path="/shop/new" element={<ShopNew/>}/>
+                  <Route path="/shop/men" element={<ShopMen/>}/>
+                  <Route path="/shop/women" element={<ShopWomen/>}/>
+                  <Route path="/shop/kids" element={<ShopKids/>}/>
                   <Route path='/account'element={<ProtectedRoute><Account /></ProtectedRoute>}/>
               </Routes>
               </AuthContextProvider>

@@ -77,15 +77,14 @@ const theme = createTheme({
     },
 });
 
-
-
-const Shop = () => {
+const ShopWomen = () => {
     const classes = styles();
     const [value, setValue] = React.useState([0, 100000]);
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
+
     return (
         <div>
             <ThemeProvider theme={theme}>
@@ -137,4 +136,4 @@ const Shop = () => {
     );
 };
 
-export default Shop;
+export default ShopWomen;
