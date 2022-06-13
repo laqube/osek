@@ -91,10 +91,12 @@ function NavBar() {
                     Balalarga
                 </Link>
             </Typography>
+            {user==null?
             <Link to="/signup"style={{textDecoration: 'none',color:'black',}}>
                 <CustomBtn txt="Kiruw" />
-            </Link>
+            </Link>:
                 <AviButton/>
+            }
         </Toolbar>
     )
 }

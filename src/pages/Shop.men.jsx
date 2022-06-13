@@ -163,8 +163,8 @@ const ShopMen = () => {
                                                           }}>
                                                         <CardMedia
                                                             component="img"
-                                                            height="100"
-                                                            image=""    
+                                                            height="250"
+                                                            image={Items.Img1}
                                                             alt="item image"
                                                         />
                                                     </Link>
