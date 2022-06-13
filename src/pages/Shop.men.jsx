@@ -66,14 +66,12 @@ const styles = makeStyles({
 })
 
 const theme = createTheme({
-
-
-    palette:{
+    palette: {
         primary: {
-            main: "#2e1667",
+            main: "#000",
         },
         secondary: {
-            main: "#c7d8ed",
+            main:"#fb4424" ,
         },
     },
     typography: {
@@ -186,16 +184,13 @@ const ShopMen = () => {
                                                             </Button>
                                                         </IconButton>
                                                     </Tooltip>
-                            
                                                 </CardActions>
                                             </Card>
                                         </Container>
                                     </div>
                                     </Grid>
                                     )
-                                    
                                 })
-                                
                                 }
                             </Grid>
                         </Grid>

@@ -94,7 +94,7 @@ function NavBar() {
             <Link to="/signup"style={{textDecoration: 'none',color:'black',}}>
                 <CustomBtn txt="Kiruw" />
             </Link>
-                <AviButton/>
+            <AviButton/>
         </Toolbar>
     )
 }
