@@ -3,8 +3,8 @@ import {createTheme, makeStyles, ThemeProvider} from "@material-ui/core/styles";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import Carousel from "../components/Carousel";
-
-
+import { collection, getDocs } from "firebase/firestore";
+import { db } from '../firebase';
 const styles = makeStyles({
     wrapper: {
         width: "65%",

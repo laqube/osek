@@ -26,6 +26,7 @@ import { Button, CardActionArea, CardActions, Tooltip } from '@material-ui/core'
 import IconButton from '@material-ui/core/IconButton';
 import Route from 'react-router-dom';
 import {Link} from "react-router-dom";
+import { ContactsOutlined } from '@mui/icons-material';
 function valuetext(value) {
     return `${value}tg`;
 }
@@ -66,14 +67,12 @@ const styles = makeStyles({
 })
 
 const theme = createTheme({
-
-
-    palette:{
+    palette: {
         primary: {
-            main: "#2e1667",
+            main: "#000",
         },
         secondary: {
-            main: "#c7d8ed",
+            main:"#fb4424" ,
         },
     },
     typography: {
@@ -97,15 +96,13 @@ const ShopMen = () => {
     const[PostItems,setPostItems]=useState([]);
     const postsItemsRef=collection(db,"Clothes");
     useEffect(()=>{
-        const getPosts=async()=>{
+        const getPosts = async() =>{
             const data = await getDocs(postsItemsRef);
-            setPostItems(data.docs.map((doc)=>({...doc.data(),id:doc.id})));
-        }
+            setPostItems(data.docs.map((doc) => ({...doc.data(), id:doc.id })));
+        };
         getPosts();
-    })
-
-
-
+    },[]);
+    console.log(PostItems);
 
     const classes = styles();
     const [value, setValue] = React.useState([0, 100000]);
@@ -186,16 +183,13 @@ const ShopMen = () => {
                                                             </Button>
                                                         </IconButton>
                                                     </Tooltip>
-                            
                                                 </CardActions>
                                             </Card>
                                         </Container>
                                     </div>
                                     </Grid>
                                     )
-                                    
                                 })
-                                
                                 }
                             </Grid>
                         </Grid>
