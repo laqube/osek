@@ -145,13 +145,14 @@ const ShopWomen = () => {
                                 </RadioGroup>
                             </FormControl>
                         </Grid>
-                        <Grid item xs={14}>
-                            <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+                        {/*SHOP ITEMS GRID START DOWN HERE\/ */}
+                        <Grid item xs={14} sx={{mt:-3}}>
+                            <Grid container>
                                 {PostItems.map((Items)=>{
                                     return(
                                         <Grid Items xs={2} sm={3} my={4}>
                                         <div>
-                                        <Container maxWidth="xs">
+                                        <Container maxWidth="xs" spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                                             <Card sx={{ maxWidth: 345 }}>
                                                 <CardActionArea>
                                                     <Link to="/404"
