@@ -33,9 +33,9 @@ function App() {
                   <Route path="/shop/new" element={<ShopNew/>}/>
                   <Route path="/shop/men" element={<ShopMen/>}/>
                   <Route path="/shop/women" element={<ShopWomen/>}/>
+                  <Route path="/account" element={<ProtectedRoute><Account/></ProtectedRoute>}/>
                   <Route path="/shop/kids" element={<ShopKids/>}/>
-
-                  <Route path="/accountlay" element={<Accountlayout/>}/>
+                  <Route path="/accountlay" element={<ProtectedRoute><Accountlayout/></ProtectedRoute>}/>
                   {/*working on account page design, that is why i made in unprotected*/}
                   {/*<Route path='/account'element={<ProtectedRoute><Account /></ProtectedRoute>}/>*/}
               </Routes>

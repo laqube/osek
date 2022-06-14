@@ -17,7 +17,6 @@ import {UserAuth} from '../context/AuthContext'
 import { getAuth,updateProfile } from "firebase/auth";
 import { useNavigate} from 'react-router-dom';
 
-
 function Copyright(props) {
     return (
         <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -37,6 +36,8 @@ function Copyright(props) {
 
 const theme = createTheme();
 const Reg = () => {
+
+
     const[email,setEmail] =useState('');
     const[password, setPassword]=useState('');
     const[name, setName]=useState('');
@@ -51,21 +52,22 @@ const Reg = () => {
         setError('');
         try{
             await createUser(email, password);
-            navigate('/account');
+            navigate('/accountlay');
+            alert("Please update page after signup")
+            updateProfile(auth.currentUser, {
+                displayName: name,
+              }).then(() => {
+                // Profile updated!
+                console.log('Profile updated!');
+              }).catch((error) => {
+                // An error occurred
+                console.log(error);
+              });
         }catch(e){
             setError(e.message);
             console.log(e.message);
         }
     };  
-    updateProfile(auth.currentUser, {
-        displayName: name,
-      }).then(() => {
-        // Profile updated!
-        // ...
-      }).catch((error) => {
-        // An error occurred
-        // ...
-      });
 
     return (
         <ThemeProvider theme={theme}>

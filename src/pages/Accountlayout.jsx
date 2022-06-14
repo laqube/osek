@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 
@@ -15,9 +15,15 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Items from '../components/item';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
+import { storage } from "../firebase";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import NavBar from '../components/NavBar';
 import {makeStyles} from "@material-ui/core/styles";
+
+
+import { useNavigate } from 'react-router-dom';
+import { UserAuth } from '../context/AuthContext';
+import { getAuth,updateProfile } from "firebase/auth";
 
 const defaultTheme = createTheme();
 
@@ -198,12 +204,72 @@ const Input = styled('input')({
 });
 
 const Accountlayout = () => {
+ const { user, logout } = UserAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      navigate('/');
+    console.log('You are logged out')
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
+  const goHome=async()=>{
+    try{navigate('/');
+    }
+    catch(e){
+      console.log(e.message);
+    }
+  }
+  const auth = getAuth();
+    if (auth.currentUser !== null) {
+        user.providerData.forEach(() => {
+        console.log("  Provider-specific UID: " + user.uid);
+        console.log("  Name: " + user.displayName);
+        console.log("  Email: " + user.email);
+      });
+    }
+
+
     const [value, setValue] = React.useState(0);
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
     const classes = styles();
+
+
+    const [image, setImage] = useState(null);
+    const [url, setUrl] = useState(null);
+  
+    const handleImageChange = (e) => {
+      if (e.target.files[0]) {
+        setImage(e.target.files[0]);
+      }
+    };
+  
+    const handleImageSubmit = () => {
+      const imageRef = ref(storage, "Image");
+      uploadBytes(imageRef, image)
+        .then(() => {
+          getDownloadURL(imageRef)
+            .then((url) => {
+              setUrl(url);
+              updateProfile(auth.currentUser, {
+                photoURL: url
+            })
+            })
+            .catch((error) => {
+              console.log(error.message, "error getting the image url");
+            });
+          setImage(null);
+        })
+        .catch((error) => {
+          console.log(error.message);
+        });
+    };
 
     return (
         <div >
@@ -215,17 +281,18 @@ const Accountlayout = () => {
                             <Grid item xs={4} direction="column">
                                 <Item sx={{
                                 }}>
-                                    <Input accept="image/*" id="icon-button-file" type="file" />
+                                    <Input accept="image/*" id="icon-button-file" type="file" onChange={handleImageChange} />
                                     <IconButton color="primary" aria-label="upload picture" component="span">
                                         <label htmlFor="icon-button-file">
                                             <StyledBadge badgeContent={
-                                                <PhotoCamera />
+                                                <PhotoCamera  />
                                             }>
-                                                <Avatar {...stringAvatar('Abo Shompay')} sx={{ width: "5rem", height:"5rem", mx:"auto"  }}/>
+                                                <Avatar src={user.photoURL} sx={{ width: "5rem", height:"5rem", mx:"auto"  }}/>
                                             </StyledBadge>
                                         </label>
 
                                     </IconButton>
+                                    <button onClick={handleImageSubmit}>Submit</button>
                                     <Tabs
                                         orientation="vertical"
                                         value={value}
@@ -244,10 +311,10 @@ const Accountlayout = () => {
                             <Grid item xs={8}>
                                 <TabPanel value={value} index={0}>
                                     <Item>
-                                        <h2>User Email</h2>
-                                        <h2>User Name</h2>
+                                        <h2>User Email:{user && user.email}</h2>
+                                        <h2>User Name: {user.displayName}</h2>
                                         <h2>Change password</h2>
-                                        <p> <button>Logout</button> </p>
+                                        <p> <button onClick={handleLogout}>Logout</button> </p>
                                     </Item>
                                 </TabPanel>
                                 <TabPanel value={value} index={1}>
