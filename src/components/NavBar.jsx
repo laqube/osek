@@ -8,6 +8,8 @@ import {Link} from "react-router-dom";
 import AviButton from "./AviButton";
 import { getAuth } from 'firebase/auth'
 
+
+
 const styles = makeStyles({
     bar:{
         paddingTop: "1.15rem",
@@ -95,9 +97,7 @@ function NavBar() {
                 <Link to="/signup"style={{textDecoration: 'none',color:'black',}}>
                 <CustomBtn txt="Kiruw" />
             </Link>:
-                <Link to="/accountlay"style={{textDecoration: 'none',color:'black',}}>
-                <CustomBtn txt="Paraqsha" />
-            </Link>
+                <AviButton/>
                 }
         </Toolbar>
     )

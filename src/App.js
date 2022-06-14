@@ -15,6 +15,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import {Navbar} from "react-bootstrap";
 import { AuthContextProvider } from './context/AuthContext';
 import Accountlayout from "./pages/Accountlayout";
+import ComponentTestPage from "./pages/ComponentTestPage";
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
                   <Route path="/accountlay" element={<ProtectedRoute><Accountlayout/></ProtectedRoute>}/>
                   {/*working on account page design, that is why i made in unprotected*/}
                   {/*<Route path='/account'element={<ProtectedRoute><Account /></ProtectedRoute>}/>*/}
+                  <Route path="/testcomp" element={<ComponentTestPage/>}/>
               </Routes>
               </AuthContextProvider>
           </BrowserRouter>

@@ -25,6 +25,7 @@ import { useNavigate } from 'react-router-dom';
 import { UserAuth } from '../context/AuthContext';
 import { getAuth,updateProfile } from "firebase/auth";
 
+
 const defaultTheme = createTheme();
 
 const theme = createTheme({
@@ -195,7 +196,6 @@ const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
     ...theme.typography.body2,
     padding: theme.spacing(1),
-    textAlign: 'center',
     color: theme.palette.text.secondary,
 }));
 
@@ -279,42 +279,40 @@ const Accountlayout = () => {
                     <Box sx={{ flexGrow: 1 }}>
                         <Grid container spacing={2}>
                             <Grid item xs={4} direction="column">
-                                <Item sx={{
-                                }}>
-                                    <Input accept="image/*" id="icon-button-file" type="file" onChange={handleImageChange} />
-                                    <IconButton color="primary" aria-label="upload picture" component="span">
-                                        <label htmlFor="icon-button-file">
-                                            <StyledBadge badgeContent={
-                                                <PhotoCamera  />
-                                            }>
-                                                <Avatar src={user.photoURL} sx={{ width: "5rem", height:"5rem", mx:"auto"  }}/>
-                                            </StyledBadge>
-                                        </label>
-
-                                    </IconButton>
-                                    <button onClick={handleImageSubmit}>Submit</button>
-                                    <Tabs
-                                        orientation="vertical"
-                                        value={value}
-                                        onChange={handleChange}
-                                        aria-label="Vertical tabs"
-                                        sx={{mt: "4rem",
-                                             mr:"auto",
-                                        }}
-                                    >
-                                        <Tab variant="stylecoded" label="Tіrkelgі" {...a11yProps(0)} />
-                                        <Tab variant="stylecoded" label="Tańdaýlylar" {...a11yProps(1)} />
-                                    </Tabs>
-                                </Item>
+                                <Box sx={{mx:"auto", textAlign: "center"}}>
+                                    <Item>
+                                        <Input accept="image/*" id="icon-button-file" type="file" onChange={handleImageChange} />
+                                        <IconButton color="primary" aria-label="upload picture" component="span" onClick={handleImageSubmit}>
+                                            <label htmlFor="icon-button-file">
+                                                <StyledBadge badgeContent={
+                                                    <PhotoCamera  />
+                                                }>
+                                                    <Avatar src={user.photoURL} sx={{ width: "5rem", height:"5rem", mx:"auto"  }}/>
+                                                </StyledBadge>
+                                            </label>
+                                        </IconButton>
+                                        <Tabs
+                                            orientation="vertical"
+                                            value={value}
+                                            onChange={handleChange}
+                                            aria-label="Vertical tabs"
+                                            sx={{mt: "2rem",
+                                                mr:"auto",
+                                            }}
+                                        >
+                                            <Tab variant="stylecoded" label="Tіrkelgі" {...a11yProps(0)} />
+                                            <Tab variant="stylecoded" label="Tańdaýlylar" {...a11yProps(1)} />
+                                        </Tabs>
+                                    </Item>
+                                </Box>
                             </Grid>
 
                             <Grid item xs={8}>
                                 <TabPanel value={value} index={0}>
-                                    <Item>
-                                        <h2>User Email:{user && user.email}</h2>
-                                        <h2>User Name: {user.displayName}</h2>
-                                        <h2>Change password</h2>
-                                        <p> <button onClick={handleLogout}>Logout</button> </p>
+                                    <Item sx={{ml:"auto"}}>
+                                        <h2>Pocta:{user && user.email}</h2>
+                                        <h2>Aty: {user.displayName}</h2>
+                                        <h2>Qupııasózdі ózgertý</h2>
                                     </Item>
                                 </TabPanel>
                                 <TabPanel value={value} index={1}>
@@ -328,7 +326,6 @@ const Accountlayout = () => {
                                         </Grid>
                                     </Item>
                                 </TabPanel>
-
                             </Grid>
                         </Grid>
                     </Box>

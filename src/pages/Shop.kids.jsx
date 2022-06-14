@@ -130,18 +130,27 @@ const ShopKids = () => {
                                 onChange={handleChange}
                                 valueLabelDisplay="auto"
                                 getAriaValueText={valuetext}
+                                sx={{color: '#808080'}}
                             />
+                            <FormLabel>Tіzіm</FormLabel>
                             <FormControl>
-                                <FormLabel id="sortingRadios">Tіzіm</FormLabel>
                                 <RadioGroup
                                     aria-labelledby="sortingRadios"
                                     defaultValue="priceUp"
                                     name="prodSort"
                                 >
-                                    <FormControlLabel value="priceUp" control={<Radio />} label="Arzanynan bastap" />
-                                    <FormControlLabel value="priceDown" control={<Radio />} label="Qymbatynan bastap" />
-                                    <FormControlLabel value="alphabetical" control={<Radio />} label="Álіpbı boıynsha" />
-                                    <FormControlLabel value="versabetical" control={<Radio />} label="Álіpbı sońynan" />
+                                    <FormControlLabel value="priceUp" control={<Radio
+                                        sx={{color: 'secondary', '&.Mui-checked': {color: '#fb4424',},}}
+                                    />} label="Arzanynan bastap" />
+                                    <FormControlLabel value="priceDown" control={<Radio
+                                        sx={{color: 'secondary', '&.Mui-checked': {color: '#fb4424',},}}
+                                    />} label="Qymbatynan bastap" />
+                                    <FormControlLabel value="alphabetical" control={<Radio
+                                        sx={{color: 'secondary', '&.Mui-checked': {color: '#fb4424',},}}
+                                    />} label="Álіpbı boıynsha" />
+                                    <FormControlLabel value="versabetical" control={<Radio
+                                        sx={{color: 'secondary', '&.Mui-checked': {color: '#fb4424',},}}
+                                    />} label="Álіpbı sońynan" />
                                 </RadioGroup>
                             </FormControl>
                         </Grid>

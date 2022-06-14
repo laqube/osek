@@ -1,6 +1,9 @@
 import React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
+import { getAuth } from "firebase/auth";
+import { useNavigate } from 'react-router-dom';
+import { UserAuth } from '../context/AuthContext';
 
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
@@ -8,7 +11,7 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-
+import Link from '@material-ui/core/Link'
 
 function stringToColor(string) {
     let hash = 0;
@@ -46,6 +49,27 @@ const AviButton = () => {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
 
+    const { user, logout } = UserAuth();
+    const navigate = useNavigate();
+
+    const handleLogout = async () => {
+        try {
+            await logout();
+            navigate('/');
+            console.log('You are logged out')
+        } catch (e) {
+            console.log(e.message);
+        }
+    };
+
+    const goHome=async()=>{
+        try{navigate('/accountlay');
+        }
+        catch(e){
+            console.log(e.message);
+        }
+    }
+
     const handleOpenUserMenu = (event) => {
         setAnchorElUser(event.currentTarget);
     };
@@ -54,11 +78,18 @@ const AviButton = () => {
         setAnchorElUser(null);
     };
 
+    const auth = getAuth();
+    if (auth.currentUser !== null) {
+        user.providerData.forEach(() => {
+            console.log("  Name: " + user.displayName);
+        });
+    }
+
     return (
         <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Baptaýlar">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar {...stringAvatar('Abo Shompay')} />
+                    <Avatar {...stringAvatar('Kak je ya ustal')} />
                 </IconButton>
             </Tooltip>
             <Menu
@@ -77,11 +108,15 @@ const AviButton = () => {
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
             >
-                {settings.map((setting) => (
-                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                        <Typography textAlign="center">{setting}</Typography>
-                    </MenuItem>
-                ))}
+                <MenuItem onClick={goHome}>
+                    Tіrkelgі
+                </MenuItem>
+                <MenuItem>
+                    Arbaca
+                </MenuItem>
+                <MenuItem onClick={handleLogout}>
+                    Cyǵý
+                </MenuItem>
             </Menu>
         </Box>
     );
