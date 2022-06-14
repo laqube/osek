@@ -12,6 +12,23 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 
+import { useEffect,useState } from 'react';
+import {collection, getDocs} from 'firebase/firestore'
+import { db } from '../firebase';
+
+
+
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Typography from '@material-ui/core/Typography';
+import { Button, CardActionArea, CardActions, Tooltip } from '@material-ui/core';
+// import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorderIcon';
+import IconButton from '@material-ui/core/IconButton';
+import Route from 'react-router-dom';
+import {Link} from "react-router-dom";
+
+
 function valuetext(value) {
     return `${value}tg`;
 }
@@ -78,6 +95,16 @@ const theme = createTheme({
 });
 
 const ShopWomen = () => {
+    const[PostItems,setPostItems]=useState([]);
+    const postsItemsRef=collection(db,"Women");
+    useEffect(()=>{
+        const getPosts = async() =>{
+            const data = await getDocs(postsItemsRef);
+            setPostItems(data.docs.map((doc) => ({...doc.data(), id:doc.id })));
+        };
+        getPosts();
+    },[]);
+
     const classes = styles();
     const [value, setValue] = React.useState([0, 100000]);
 
@@ -120,11 +147,51 @@ const ShopWomen = () => {
                         </Grid>
                         <Grid item xs={14}>
                             <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-                                {Array.from(Array(7)).map((_, index) => (
-                                    <Grid item xs={2} sm={3} my={4} key={index}>
-                                        <Item/>
+                                {PostItems.map((Items)=>{
+                                    return(
+                                        <Grid Items xs={2} sm={3} my={4}>
+                                        <div>
+                                        <Container maxWidth="xs">
+                                            <Card sx={{ maxWidth: 345 }}>
+                                                <CardActionArea>
+                                                    <Link to="/404"
+                                                          style={{
+                                                              textDecoration: 'none',
+                                                              color:'black'
+                                                          }}>
+                                                        <CardMedia
+                                                            component="img"
+                                                            height="250"
+                                                            image={Items.Img1}
+                                                            alt="item image"
+                                                        />
+                                                    </Link>
+                                                    <CardContent>
+                                                        <Typography gutterBottom variant="h5" component="div">
+                                                            {Items.Model}
+                                                        </Typography>
+                                                        <Typography variant="body2" color="text.secondary">
+                                                            {Items.Price}
+                                                        </Typography>
+                                                    </CardContent>
+                                                </CardActionArea>
+                                                <CardActions  justifyContent="flex-end">
+                                                    <Tooltip title="Like">
+                                                        <IconButton>
+                                                            <Button size="small" color="primary">
+                                                                {/*<FavoriteBorderIcon/>*/}
+                                                                Icon
+                                                            </Button>
+                                                        </IconButton>
+                                                    </Tooltip>
+                                                </CardActions>
+                                            </Card>
+                                        </Container>
+                                    </div>
                                     </Grid>
-                                ))}
+                                    )
+                                })
+                                }
                             </Grid>
                         </Grid>
                     </Grid>

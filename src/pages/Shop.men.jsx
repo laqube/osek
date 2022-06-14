@@ -102,7 +102,6 @@ const ShopMen = () => {
         };
         getPosts();
     },[]);
-    console.log(PostItems);
 
     const classes = styles();
     const [value, setValue] = React.useState([0, 100000]);
