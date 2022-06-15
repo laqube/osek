@@ -15,17 +15,17 @@ const Footer = () => {
             <Container>
                 <Row>
                     <Column>
-                        <Heading>About Us</Heading>
-                        <FooterLink href="#">Aim</FooterLink>
-                        <FooterLink href="#">Vision</FooterLink>
+                        <Heading>Bіz týraly</Heading>
+                        <FooterLink href="#">Maqsatymyz</FooterLink>
+                        <FooterLink href="#">Uıym pálsapasy</FooterLink>
                     </Column>
                     <Column>
-                        <Heading>Contact Us</Heading>
+                        <Heading>Qala fılıaldarymen baılanys</Heading>
                         <FooterLink href="#">Almaty</FooterLink>
                         <FooterLink href="#">Astana</FooterLink>
                     </Column>
                     <Column>
-                        <Heading>Social Media</Heading>
+                        <Heading>Ósek áleýmettіk jelіde</Heading>
                         <FooterLink href="#">
                             <i className="fab fa-facebook-f">
                 <span style={{ marginLeft: "10px" }}>

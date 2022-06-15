@@ -27,6 +27,8 @@ import { Button, CardActionArea, CardActions, Tooltip } from '@material-ui/core'
 import IconButton from '@material-ui/core/IconButton';
 import Route from 'react-router-dom';
 import {Link} from "react-router-dom";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import {getAuth} from "firebase/auth";
 
 
 function valuetext(value) {
@@ -95,6 +97,9 @@ const theme = createTheme({
 });
 
 const ShopWomen = () => {
+    const auth=getAuth();
+    const user=auth.currentUser;
+
     const[PostItems,setPostItems]=useState([]);
     const postsItemsRef=collection(db,"Women");
     useEffect(()=>{
@@ -141,16 +146,10 @@ const ShopWomen = () => {
                                 >
                                     <FormControlLabel value="priceUp" control={<Radio
                                         sx={{color: 'secondary', '&.Mui-checked': {color: '#fb4424',},}}
-                                    />} label="Arzanynan bastap" />
-                                    <FormControlLabel value="priceDown" control={<Radio
-                                        sx={{color: 'secondary', '&.Mui-checked': {color: '#fb4424',},}}
-                                    />} label="Qymbatynan bastap" />
+                                    />} label="Baǵasy" />
                                     <FormControlLabel value="alphabetical" control={<Radio
                                         sx={{color: 'secondary', '&.Mui-checked': {color: '#fb4424',},}}
-                                    />} label="Álіpbı boıynsha" />
-                                    <FormControlLabel value="versabetical" control={<Radio
-                                        sx={{color: 'secondary', '&.Mui-checked': {color: '#fb4424',},}}
-                                    />} label="Álіpbı sońynan" />
+                                    />} label="Álіpbı" />
                                 </RadioGroup>
                             </FormControl>
                         </Grid>
@@ -185,15 +184,19 @@ const ShopWomen = () => {
                                                         </Typography>
                                                     </CardContent>
                                                 </CardActionArea>
-                                                <CardActions  justifyContent="flex-end">
-                                                    <Tooltip title="Like">
-                                                        <IconButton>
-                                                            <Button size="small" color="primary">
-                                                                {/*<FavoriteBorderIcon/>*/}
-                                                                Icon
-                                                            </Button>
-                                                        </IconButton>
-                                                    </Tooltip>
+
+                                                <CardActions disableSpacing sx={{}}>
+                                                    {!user?
+                                                        <div/>
+                                                        :
+                                                        <Tooltip title="Sebetke qosý" >
+                                                            <IconButton>
+                                                                <Button size="small" color="primary">
+                                                                    <AddShoppingCartIcon sx={{ color: "#fb4424", float:"left", mr:"auto", }}/>
+                                                                </Button>
+                                                            </IconButton>
+                                                        </Tooltip>
+                                                    }
                                                 </CardActions>
                                             </Card>
                                         </Container>

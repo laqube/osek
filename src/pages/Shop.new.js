@@ -11,6 +11,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
+import {getAuth} from "firebase/auth";
 
 function valuetext(value) {
     return `${value}tg`;
@@ -80,6 +81,9 @@ const theme = createTheme({
 
 
 const ShopNew = () => {
+    const auth=getAuth();
+    const user=auth.currentUser;
+
     const classes = styles();
     const [value, setValue] = React.useState([0, 100000]);
 

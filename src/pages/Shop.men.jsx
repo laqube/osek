@@ -15,7 +15,7 @@ import { useEffect,useState } from 'react';
 import {collection, getDocs} from 'firebase/firestore'
 import { db } from '../firebase';
 import { addDoc } from 'firebase/firestore';
-
+import { getAuth } from 'firebase/auth'
 
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -27,6 +27,9 @@ import IconButton from '@material-ui/core/IconButton';
 import Route from 'react-router-dom';
 import {Link} from "react-router-dom";
 import { ContactsOutlined } from '@mui/icons-material';
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import CustomBtn from "../components/CustomBtn";
+import AviButton from "../components/AviButton";
 function valuetext(value) {
     return `${value}tg`;
 }
@@ -93,15 +96,14 @@ const theme = createTheme({
 });
 
 const ShopMen = () => {
+    const auth=getAuth();
+    const user=auth.currentUser;
+
     const handlenew = async(Model, Price, Img1)=>{
         const cartref=collection(db,"Cart")
         const payload={Model:Model,Price:Price,Img1:Img1}
         await addDoc(cartref,payload);
     }
-
-
-
-
 
     const[PostItems,setPostItems]=useState([]);
     const postsItemsRef=collection(db,"Clothes");
@@ -149,16 +151,10 @@ const ShopMen = () => {
                                 >
                                     <FormControlLabel value="priceUp" control={<Radio
                                         sx={{color: 'secondary', '&.Mui-checked': {color: '#fb4424',},}}
-                                    />} label="Arzanynan bastap" />
-                                    <FormControlLabel value="priceDown" control={<Radio
-                                        sx={{color: 'secondary', '&.Mui-checked': {color: '#fb4424',},}}
-                                    />} label="Qymbatynan bastap" />
+                                    />} label="Baǵasy" />
                                     <FormControlLabel value="alphabetical" control={<Radio
                                         sx={{color: 'secondary', '&.Mui-checked': {color: '#fb4424',},}}
-                                    />} label="Álіpbı boıynsha" />
-                                    <FormControlLabel value="versabetical" control={<Radio
-                                        sx={{color: 'secondary', '&.Mui-checked': {color: '#fb4424',},}}
-                                    />} label="Álіpbı sońynan" />
+                                    />} label="Álіpbı" />
                                 </RadioGroup>
                             </FormControl>
                         </Grid>
@@ -192,15 +188,18 @@ const ShopMen = () => {
                                                         </Typography>
                                                     </CardContent>
                                                 </CardActionArea>
-                                                <CardActions  justifyContent="flex-end">
-                                                    <Tooltip title="Like">
-                                                        <IconButton>
-                                                            <Button size="small" color="primary">
-                                                                {/*<FavoriteBorderIcon/>*/}
-                                                                Icon
-                                                            </Button>
-                                                        </IconButton>
-                                                    </Tooltip>
+                                                <CardActions disableSpacing sx={{}}>
+                                                    {!user?
+                                                        <div/>
+                                                        :
+                                                        <Tooltip title="Sebetke qosý" >
+                                                            <IconButton>
+                                                                <Button size="small" color="primary">
+                                                                    <AddShoppingCartIcon sx={{ color: "#fb4424", float:"left", mr:"auto", }}/>
+                                                                </Button>
+                                                            </IconButton>
+                                                        </Tooltip>
+                                                    }
                                                 </CardActions>
                                             </Card>
                                         </Container>

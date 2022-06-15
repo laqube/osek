@@ -8,11 +8,11 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import IconButton from '@material-ui/core/IconButton';
 import Box from '@material-ui/core/Box'
 import Modal from '@mui/material/Modal';
-import {Link} from "react-router-dom";
 import {createTheme, ThemeProvider} from "@mui/material/styles";
 import Carousel from "../components/Carousel";
 import Grid from "@material-ui/core/Grid";
 import CsBtn from "../components/CustomBtn"
+import {getAuth} from "firebase/auth";
 
 
 const defaultTheme = createTheme();
@@ -62,6 +62,8 @@ const style = {
 
 
 const Item = () => {
+    const auth=getAuth();
+    const user=auth.currentUser;
 
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
@@ -106,13 +108,17 @@ const Item = () => {
                             </CardContent>
                         </CardActionArea>
                         <CardActions disableSpacing sx={{}}>
-                            <Tooltip title="Sebetke qosý" >
-                                <IconButton>
-                                    <Button size="small" color="primary">
-                                        <AddShoppingCartIcon sx={{ color: "#fb4424", float:"left", mr:"auto", }}/>
-                                    </Button>
-                                </IconButton>
-                            </Tooltip>
+                            {!user?
+                                <div/>
+                                :
+                                <Tooltip title="Sebetke qosý" >
+                                    <IconButton>
+                                        <Button size="small" color="primary">
+                                            <AddShoppingCartIcon sx={{ color: "#fb4424", float:"left", mr:"auto", }}/>
+                                        </Button>
+                                    </IconButton>
+                                </Tooltip>
+                            }
                         </CardActions>
                     </Card>
 
