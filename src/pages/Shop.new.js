@@ -119,16 +119,10 @@ const ShopNew = () => {
                                 >
                                     <FormControlLabel value="priceUp" control={<Radio
                                         sx={{color: 'secondary', '&.Mui-checked': {color: '#fb4424',},}}
-                                    />} label="Arzanynan bastap" />
-                                    <FormControlLabel value="priceDown" control={<Radio
-                                        sx={{color: 'secondary', '&.Mui-checked': {color: '#fb4424',},}}
-                                    />} label="Qymbatynan bastap" />
+                                    />} label="Baǵasy" />
                                     <FormControlLabel value="alphabetical" control={<Radio
                                         sx={{color: 'secondary', '&.Mui-checked': {color: '#fb4424',},}}
-                                    />} label="Álіpbı boıynsha" />
-                                    <FormControlLabel value="versabetical" control={<Radio
-                                        sx={{color: 'secondary', '&.Mui-checked': {color: '#fb4424',},}}
-                                    />} label="Álіpbı sońynan" />
+                                    />} label="Álіpbı" />
                                 </RadioGroup>
                             </FormControl>
                         </Grid>
