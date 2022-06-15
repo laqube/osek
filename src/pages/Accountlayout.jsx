@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 
@@ -19,7 +19,16 @@ import { storage } from "../firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import NavBar from '../components/NavBar';
 import {makeStyles} from "@material-ui/core/styles";
-
+import { db } from '../firebase';
+import { getDocs,collection } from 'firebase/firestore';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import { Button, CardActionArea, CardActions, Tooltip } from '@material-ui/core';
+// import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorderIcon';
+import Route from 'react-router-dom';
+import {Link} from "react-router-dom";
+import { ContactsOutlined } from '@mui/icons-material';
 
 import { useNavigate } from 'react-router-dom';
 import { UserAuth } from '../context/AuthContext';
@@ -249,7 +258,16 @@ const Accountlayout = () => {
         setImage(e.target.files[0]);
       }
     };
-  
+    const[PostItems,setPostItems]=useState([]);
+    const postsItemsRef=collection(db,"Cart");
+    useEffect(()=>{
+        const getPosts = async() =>{
+            const data = await getDocs(postsItemsRef);
+            setPostItems(data.docs.map((doc) => ({...doc.data(), id:doc.id })));
+        };
+        getPosts();
+    },[]);
+
     const handleImageSubmit = () => {
       const imageRef = ref(storage, "Image");
       uploadBytes(imageRef, image)
@@ -318,11 +336,49 @@ const Accountlayout = () => {
                                 <TabPanel value={value} index={1}>
                                     <Item>
                                         <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-                                            {Array.from(Array(3)).map((_, index) => (
-                                                <Grid item xs={6} sm={6} my={6} key={index}>
-                                                    <Items/>
-                                                </Grid>
-                                            ))}
+                                        {PostItems.map((Items)=>{
+                                    return(
+                                        <Grid Items xs={2} sm={3} my={4}>
+                                        <Container maxWidth="xs" spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+                                            <Card sx={{ maxWidth: 300 }}>
+                                                <CardActionArea>
+                                                    <Link to="/404"
+                                                          style={{
+                                                              textDecoration: 'none',
+                                                              color:'black'
+                                                          }}>
+                                                        <CardMedia
+                                                            component="img"
+                                                            height="250"
+                                                            image={Items.Img1}
+                                                            alt="item image"
+                                                        />
+                                                    </Link>
+                                                    <CardContent>
+                                                        <Typography gutterBottom variant="h5" component="div">
+                                                            {Items.Model}
+                                                        </Typography>
+                                                        <Typography variant="body2" color="text.secondary">
+                                                            {Items.Price}
+                                                        </Typography>
+                                                    </CardContent>
+                                                </CardActionArea>
+                                                <CardActions  justifyContent="flex-end">
+                                                    <Tooltip title="Like">
+                                                        <IconButton>
+                                                            <Button size="small" color="primary">
+                                                                {/*<FavoriteBorderIcon/>*/}
+                                                                Icon
+                                                            </Button>
+                                                        </IconButton>
+                                                    </Tooltip>
+                                                </CardActions>
+                                            </Card>
+                                        </Container>
+                                    </Grid>
+                                    )
+                                })
+                                }
                                         </Grid>
                                     </Item>
                                 </TabPanel>

@@ -14,7 +14,7 @@ import FormLabel from '@mui/material/FormLabel';
 import { useEffect,useState } from 'react';
 import {collection, getDocs} from 'firebase/firestore'
 import { db } from '../firebase';
-
+import { addDoc } from 'firebase/firestore';
 
 
 import Card from '@material-ui/core/Card';
@@ -93,6 +93,16 @@ const theme = createTheme({
 });
 
 const ShopMen = () => {
+    const handlenew = async(Model, Price, Img1)=>{
+        const cartref=collection(db,"Cart")
+        const payload={Model:Model,Price:Price,Img1:Img1}
+        await addDoc(cartref,payload);
+    }
+
+
+
+
+
     const[PostItems,setPostItems]=useState([]);
     const postsItemsRef=collection(db,"Clothes");
     useEffect(()=>{
